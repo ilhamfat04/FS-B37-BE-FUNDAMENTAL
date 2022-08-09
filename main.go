@@ -11,8 +11,6 @@ import (
 // Create main function to show "hello world" here ...
 
 func main() {
-	fmt.Println("Hello world")
-
 	route := mux.NewRouter()
 	// r.GET("/", (req, res)=> { })
 	route.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
@@ -21,5 +19,6 @@ func main() {
 		w.Write([]byte("Hello World"))
 	}).Methods("GET")
 
+	fmt.Println("Server running on port 5000")
 	http.ListenAndServe("localhost:5000", route)
 }
