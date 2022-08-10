@@ -28,7 +28,6 @@ func (r *repository) FindUsers() ([]models.User, error) {
 
 func (r *repository) GetUser(ID int) (models.User, error) {
 	var user models.User
-	// Using "First" method here ...
 	err := r.db.First(&user, ID).Error
 
 	return user, err
