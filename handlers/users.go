@@ -42,6 +42,7 @@ func (h *handler) FindUsers(w http.ResponseWriter, r *http.Request) {
 func (h *handler) GetUser(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Content-Type", "application/json")
 
+	// convert string id become int id
 	id, _ := strconv.Atoi(mux.Vars(r)["id"])
 
 	user, err := h.UserRepository.GetUser(id)
