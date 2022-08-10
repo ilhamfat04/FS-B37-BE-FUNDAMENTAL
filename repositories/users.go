@@ -11,7 +11,7 @@ import (
 // Declare UserRepository interface here ...
 type UserRepository interface {
 	FindUsers() ([]models.User, error)
-	GetUser(ID int) ([]models.User, error)
+	GetUser(ID int) (models.User, error)
 }
 
 // Declare repository struct here ...
@@ -33,3 +33,9 @@ func (r *repository) FindUsers() ([]models.User, error) {
 }
 
 // Create GetUser method here ...
+func (r *repository) GetUser(ID int) (models.User, error) {
+	var user models.User
+	err := r.db.Raw("SELECT * FROM users WHERE id=?", ID).Scan(&user).Error
+
+	return user, err
+}
