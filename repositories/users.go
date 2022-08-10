@@ -21,7 +21,7 @@ func RepositoryUser(db *gorm.DB) *repository {
 
 func (r *repository) FindUsers() ([]models.User, error) {
 	var users []models.User
-	// Using "Find" method here ...
+	err := r.db.Find(&users).Error
 
 	return users, err
 }
@@ -29,7 +29,6 @@ func (r *repository) FindUsers() ([]models.User, error) {
 func (r *repository) GetUser(ID int) (models.User, error) {
 	var user models.User
 	// Using "First" method here ...
-
 
 	return user, err
 }
